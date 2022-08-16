@@ -1,0 +1,9 @@
+body{
+    background-color: #0d1219;
+}
+#jumbo-heder{
+    text-align: center;
+    font-size: 42px;
+    font-weight: 600;
+    font-family: 'Tiro Gurmukhi', serif;
+}
