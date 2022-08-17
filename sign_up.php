@@ -8,25 +8,47 @@
         $lastname="";
         $email="";
         $password="";
+        $msg ="";
 
         $firstname=input_varify($_POST['firstname']);
         $lastname=input_varify($_POST['lastname']);
         $email=input_varify($_POST['email']);
         $password=input_varify($_POST['password']);
 
-        $query = "INSERT INTO tbl_user(Fname,Lname,Email,Pwd,Reg_DT) 
-        VALUES('{$firstname}','{$lastname}','{$email}','{$password}', NOW()) ";
+        $query2 = "SELECT * FROM tbl_user WHERE Fname= '{$firstname}' 
+        AND email = '{$email}'";
 
-        $result = mysqli_query($conn , $query);
+        $Showresult = mysqli_query($conn, $query2);
         
-        if($result){
-            echo "User Registration Success!!";
-        }
-        else{
-            echo mysqli_error($conn);
-        }
+        if($Showresult){
+            if(mysqli_num_rows($Showresult) == 1){
+                $msg = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Sorry!</strong> This User already have in this system. Please try another email account.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>';
+            }
+            else{
+                $query = "INSERT INTO tbl_user(Fname,Lname,Email,Pwd,Reg_DT) 
+                VALUES('{$firstname}','{$lastname}','{$email}','{$password}', NOW()) ";
 
-        
+                $result = mysqli_query($conn , $query);
+                
+                if($result){
+                    $msg = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <strong>User Registratio Success!</strong> Welcome to the Our Community.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+                }
+                else{
+                    echo mysqli_error($conn);
+                } 
+            }
+        }
+      
     }
 
 //inbuilt function 
@@ -69,6 +91,8 @@ function input_varify($data){
                  <div class="card-body" id="card-body" >
                     
                     <form action="sign_up.php" method="POST" autocomplete="off">
+
+                    <?php  if(!empty($msg)){echo $msg;}  ?>
 
                         <div class="form-group">
                             <label for="">First Name</label>
