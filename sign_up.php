@@ -1,3 +1,50 @@
+<?php include_once('inc/conn.php'); ?>
+
+<?php
+    if(isset($_POST['submit'])){
+
+        //Declaring variables and assign empty values
+        $firstname="";
+        $lastname="";
+        $email="";
+        $password="";
+
+        $firstname=input_varify($_POST['firstname']);
+        $lastname=input_varify($_POST['lastname']);
+        $email=input_varify($_POST['email']);
+        $password=input_varify($_POST['password']);
+
+        $query = "INSERT INTO tbl_user(Fname,Lname,Email,Pwd,Reg_DT) 
+        VALUES('{$firstname}','{$lastname}','{$email}','{$password}', NOW()) ";
+
+        $result = mysqli_query($conn , $query);
+        
+        if($result){
+            echo "User Registration Success!!";
+        }
+        else{
+            echo mysqli_error($conn);
+        }
+
+        
+    }
+
+//inbuilt function 
+function input_varify($data){
+    //remove empty space from user input
+    $data=trim($data);
+
+    //remove backslash from user input
+    $data=stripcslashes($data);
+
+    //convert special charcters to html entities
+    $data=htmlspecialchars($data);
+
+    return $data;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,30 +67,34 @@
                     <h4>Sign Up Form</h4>
                  </div>
                  <div class="card-body" id="card-body" >
-                    <div class="form-group">
-                      <label for="">First Name</label>
-                      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                      <small id="helpId" class="text-muted">Enter Your First Name</small>
-                    </div>
-                    <div class="form-group">
-                      <label for="">Second Name</label>
-                      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                      <small id="helpId" class="text-muted">Enter Your Second Name</small>
-                    </div>
-                    <div class="form-group">
-                      <label for="">Email</label>
-                      <input type="email" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                      <small id="helpId" class="text-muted">Enter Your Email address</small>
-                    </div>
-                    <div class="form-group">
-                      <label for="">Password</label>
-                      <input type="password" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                      <small id="helpId" class="text-muted">Enter Your own Password</small>
-                    </div>
-                 </div>
-                 <div class="card-footer" id="card-footer">
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                 </div>
+                    
+                    <form action="sign_up.php" method="POST" autocomplete="off">
+
+                        <div class="form-group">
+                            <label for="">First Name</label>
+                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="" aria-describedby="helpId">
+                            <small id="helpId" class="text-muted">Enter Your First Name</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Last Name</label>
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="" aria-describedby="helpId">
+                            <small id="helpId" class="text-muted">Enter Your Last Name</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId">
+                            <small id="helpId" class="text-muted">Enter Your Email address</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="" aria-describedby="helpId">
+                            <small id="helpId" class="text-muted">Enter Your own Password</small>
+                        </div>
+                      </div>
+                         <div class="card-footer" id="card-footer">
+                         <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                     </form>   
                </div>
             </div>
         </div>
