@@ -1,0 +1,16 @@
+body{
+    background-color: #021023;
+}
+#card-header{
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:#021023 ;
+    color: white;
+}
+#card-body{
+    background-color:#021023d7 ;
+    color: white;
+}
+#card-footer{
+    background-color:#021023 ;
+    color: white;
+}
