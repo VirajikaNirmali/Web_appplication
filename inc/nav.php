@@ -22,11 +22,14 @@
       <li class="nav-item active">
         <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="Librarian.php">Librarian</a>
+      </li> -->
       <li class="nav-item">
-        <a class="nav-link" href="#">Librarian</a>
+        <a class="nav-link" href="Books.php">Books</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="Books.php" role="button" data-toggle="dropdown" aria-expanded="false">
           Books
         </a>
         <div class="dropdown-menu">
@@ -35,9 +38,9 @@
           <a class="dropdown-item" href="#">Love</a>
           <a class="dropdown-item" href="#">Advenctures</a>
         </div>
-      </li>
+      </li> -->
       <li class="nav-item">
-        <a class="nav-link disabled">Events</a>
+        <a class="nav-link" href="Events.php">Events</a>
       </li>
     </ul>
     <ul class="navbar-nav">

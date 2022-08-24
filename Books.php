@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron mt-4">
-                    <h4 id="jumbo-heder">Welcome to the Library</h4>
+                    <h4 id="jumbo-heder">Book section</h4>
                 </div>
             </div>
         </div>
