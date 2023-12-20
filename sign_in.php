@@ -6,7 +6,7 @@
 <?php
     if(isset($_POST['submit'])){
 
-        //Declaring variables and assign empty values
+        //Declaring variables and assign empty values in php
         $email="";
         $password="";
         $msg ="";
